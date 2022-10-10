@@ -145,9 +145,17 @@
            </td>
          </tr>
          <tr >
-           <td style="width: 20%;" id="td1">
-             0{{9-clock}}:00-0{{9-clock}}:30
+		 <!--
+           <td style="width: 20%;" id="td1" v-if="9-clock>=0">
+             {{9-clock}}:00-{{9-clock}}:30
            </td>
+		   <td v-else>
+		   {{24+(9-clock)}}:00-{{24+(9-clock)}}:30
+		   </td>
+		   -->
+		   <td style="width: 20%;" id="td1">
+		   {{(9-clock)<0?(9-clock+24):(9-clock)}}:00-{{(9-clock)<0?(9-clock+24):(9-clock)}}:30<sup style='color:red' v-if="(9-clock)<0">-1</sup>
+		   </td>
 		   <td>
 		   09:00-09:30
 		   </td>
@@ -156,9 +164,9 @@
            </td>
          </tr>
          <tr >
-          <td>
-            0{{9-clock}}:30-0{{9-clock}}:45
-          </td>
+		  <td >
+		   {{(9-clock)<0?(9-clock+24):(9-clock)}}:30-{{(9-clock)<0?(9-clock+24):(9-clock)}}:40<sup style='color:red' v-if="(9-clock)<0">-1</sup>
+		   </td>
 		  <td>
 		   09:30-09:45
 		   </td>
@@ -168,7 +176,13 @@
         </tr> 
         <tr >
           <td>
-            0{{9-clock}}:45-{{10-clock}}:45
+		  {{(9-clock)<0?(9-clock+24):(9-clock)}}:45-{{(10-clock)<0?(10-clock+24):(10-clock)}}:45<sup style='color:red' v-if="(9-clock)<0">-1</sup>
+		  <!--
+		  <span v-if="9-clock>=0">{{9-clock}}:45-</span>
+		  <span else>{{24+(9-clock)}}:45-</span>
+          <span v-if="10-clock>=0">{{10-clock}}:45</span>
+		  <span else>{{24+(10-clock)}}:45</span>
+		  -->
           </td>
 		  <td>
 		   09:45-10:45
@@ -181,7 +195,7 @@
         </tr> 
         <tr >
           <td>
-            {{10-clock}}:45-{{11-clock}}:15
+            {{(10-clock)<0?(10-clock+24):(10-clock)}}:45-{{(11-clock)<0?(11-clock+24):(11-clock)}}:15<sup style='color:red' v-if="(10-clock)<0">-1</sup>
           </td>
 		  <td>
 		   10:45-11:15
@@ -192,7 +206,7 @@
         </tr> 
         <tr >
           <td>
-            {{11-clock}}:15-{{12-clock}}:30
+			{{(11-clock)<0?(11-clock+24):(11-clock)}}:15-{{(12-clock)<0?(12-clock+24):(12-clock)}}:30<sup style='color:red' v-if="(11-clock)<0">-1</sup>
           </td>
 		  <td>
 		   11:15-12:30
@@ -204,7 +218,7 @@
         </tr> 
         <tr >
           <td>
-            {{12-clock}}:30-{{13-clock}}:40
+			{{(12-clock)<0?(12-clock+24):(12-clock)}}:30-{{(13-clock)<0?(13-clock+24):(13-clock)}}:40<sup style='color:red' v-if="(12-clock)<0">-1</sup>
           </td>
 		  <td>
 		   12:30-13:40
@@ -215,7 +229,7 @@
         </tr> 
         <tr >
           <td>
-            {{13-clock}}:40-{{15-clock}}:20
+			{{(13-clock)<0?(13-clock+24):(13-clock)}}:40-{{(15-clock)<0?(15-clock+24):(15-clock)}}:20<sup style='color:red' v-if="(13-clock)<0">-1</sup>
           </td>
 		  <td>
 		   13:40-15:20
@@ -227,7 +241,7 @@
         </tr> 
         <tr >
           <td>
-            {{15-clock}}:20-{{15-clock}}:45
+			{{(15-clock)<0?(15-clock+24):(15-clock)}}:20-{{(15-clock)<0?(15-clock+24):(15-clock)}}:45<sup style='color:red' v-if="(15-clock)<0">-1</sup>
           </td>
 		  <td>
 		   15:20-15:45
@@ -238,7 +252,7 @@
         </tr> 
 		<tr >
           <td>
-            {{15-clock}}:45-{{17-clock}}:00
+			{{(15-clock)<0?(15-clock+24):(15-clock)}}:45-{{(17-clock)<0?(17-clock+24):(17-clock)}}:00<sup style='color:red' v-if="(15-clock)<0">-1</sup>
           </td>
 		  <td>
 		   15:45-17:00
@@ -250,7 +264,7 @@
         </tr> 
 		<tr >
           <td rowspan="2">
-            {{17-clock}}:10-{{18-clock}}:00
+			{{(17-clock)<0?(17-clock+24):(17-clock)}}:00-{{(18-clock)<0?(18-clock+24):(18-clock)}}:00<sup style='color:red' v-if="(17-clock)<0">-1</sup>
           </td>
 		  <td rowspan="2">
 		   17:10-18:00
@@ -277,7 +291,7 @@
          </tr>
          <tr >
            <td style="width: 20%;">
-             0{{9-clock}}:15-0{{9-clock}}:30
+			 {{(9-clock)<0?(9-clock+24):(9-clock)}}:15-{{(9-clock)<0?(9-clock+24):(9-clock)}}:30<sup style='color:red' v-if="(9-clock)<0">-1</sup>
            </td>
 		   <td>
 		   09:15-09:30
@@ -288,7 +302,7 @@
          </tr>
          <tr >
           <td>
-            0{{9-clock}}:30-{{10-clock}}:30
+			{{(9-clock)<0?(9-clock+24):(9-clock)}}:30-{{(10-clock)<0?(10-clock+24):(10-clock)}}:30<sup style='color:red' v-if="(9-clock)<0">-1</sup>
           </td>
 		  <td>
 		   09:30-10:30
@@ -301,7 +315,7 @@
         </tr> 
         <tr >
           <td>
-            {{10-clock}}:30-{{10-clock}}:50
+			{{(10-clock)<0?(10-clock+24):(10-clock)}}:30-{{(10-clock)<0?(10-clock+24):(10-clock)}}:50<sup style='color:red' v-if="(10-clock)<0">-1</sup>
           </td>
 		  <td>
 		   10:30-10:50
@@ -312,7 +326,7 @@
         </tr> 
         <tr >
           <td>
-            {{10-clock}}:50-{{12-clock}}:30
+            {{(10-clock)<0?(10-clock+24):(10-clock)}}:50-{{(12-clock)<0?(12-clock+24):(12-clock)}}:30<sup style='color:red' v-if="(10-clock)<0">-1</sup>
           </td>
 		  <td>
 		   10:50-12:30
@@ -324,7 +338,7 @@
         </tr> 
         <tr >
           <td>
-            {{12-clock}}:30-{{13-clock}}:40
+            {{(12-clock)<0?(12-clock+24):(12-clock)}}:30-{{(13-clock)<0?(13-clock+24):(13-clock)}}:40<sup style='color:red' v-if="(12-clock)<0">-1</sup>
           </td>
 		  <td>
 		   12:30-13:40
@@ -335,7 +349,7 @@
         </tr> 
         <tr >
           <td>
-            {{13-clock}}:40-{{15-clock}}:20
+            {{(13-clock)<0?(13-clock+24):(13-clock)}}:40-{{(15-clock)<0?(15-clock+24):(15-clock)}}:20<sup style='color:red' v-if="(13-clock)<0">-1</sup>
           </td>
 		  <td>
 		   13:40-15:20
@@ -347,7 +361,7 @@
         </tr> 
         <tr >
           <td>
-            {{15-clock}}:20-{{15-clock}}:45
+            {{(15-clock)<0?(15-clock+24):(15-clock)}}:20-{{(15-clock)<0?(15-clock+24):(15-clock)}}:45<sup style='color:red' v-if="(15-clock)<0">-1</sup>
           </td>
 		  <td>
 		   15:20-15:45
@@ -358,7 +372,7 @@
         </tr> 
 		<tr >
           <td>
-            {{15-clock}}:45-{{17-clock}}:00
+            {{(15-clock)<0?(15-clock+24):(15-clock)}}:45-{{(17-clock)<0?(17-clock+24):(17-clock)}}:00<sup style='color:red' v-if="(15-clock)<0">-1</sup>
           </td>
 		  <td>
 		   15:45-17:00
@@ -370,7 +384,7 @@
         </tr> 
 		<tr >
           <td>
-            {{18-clock}}:00-{{21-clock}}:00
+            {{(18-clock)<0?(18-clock+24):(18-clock)}}:00-{{(21-clock)<0?(21-clock+24):(21-clock)}}:00<sup style='color:red' v-if="(18-clock)<0">-1</sup>
           </td>
 		  <td>
 		   18:00-21:00
@@ -392,10 +406,10 @@
          </tr>
          <tr >
            <td style="width: 20%;">
-             0{{9-clock}}:15-0{{9-clock}}:30
+             {{(9-clock)<0?(9-clock+24):(9-clock)}}:15-{{(9-clock)<0?(9-clock+24):(9-clock)}}:30<sup style='color:red' v-if="(9-clock)<0">-1</sup>
            </td>
 		   <td>
-		   09:00-09:30
+		   09:15-09:30
 		   </td>
            <td>
              Registration
@@ -403,7 +417,7 @@
          </tr>
          <tr >
           <td>
-            0{{9-clock}}:30-{{10-clock}}:30
+            {{(9-clock)<0?(9-clock+24):(9-clock)}}:30-{{(10-clock)<0?(10-clock+24):(10-clock)}}:30<sup style='color:red' v-if="(9-clock)<0">-1</sup>
           </td>
 		  <td>
 		   09:30-10:30
@@ -416,7 +430,7 @@
         </tr> 
         <tr >
           <td>
-            {{10-clock}}:30-{{10-clock}}:50
+            {{(10-clock)<0?(10-clock+24):(10-clock)}}:30-{{(10-clock)<0?(10-clock+24):(10-clock)}}:50<sup style='color:red' v-if="(10-clock)<0">-1</sup>
           </td>
 		  <td>
 		   10:30-10:50
@@ -427,7 +441,7 @@
         </tr> 
         <tr >
           <td>
-            {{10-clock}}:50-{{12-clock}}:30
+            {{(10-clock)<0?(10-clock+24):(10-clock)}}:50-{{(12-clock)<0?(12-clock+24):(12-clock)}}:30<sup style='color:red' v-if="(10-clock)<0">-1</sup>
           </td>
 		  <td>
 		   10:50-12:30
@@ -439,7 +453,7 @@
         </tr> 
         <tr >
           <td>
-            {{12-clock}}:30-{{12-clock}}:40
+            {{(12-clock)<0?(12-clock+24):(12-clock)}}:30-{{(12-clock)<0?(12-clock+24):(12-clock)}}:40<sup style='color:red' v-if="(12-clock)<0">-1</sup>
           </td>
 		  <td>
 		   12:30-12:40
@@ -450,7 +464,7 @@
         </tr> 
         <tr >
           <td>
-            {{12-clock}}:40-{{14-clock}}:00
+            {{(12-clock)<0?(12-clock+24):(12-clock)}}:40-{{(14-clock)<0?(14-clock+24):(14-clock)}}:00<sup style='color:red' v-if="(12-clock)<0">-1</sup>
           </td>
 		  <td>
 		   12:40-14:00
